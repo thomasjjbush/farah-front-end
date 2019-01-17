@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh; }
+  .home__link {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px; }
+    .home__link--logo {
+      display: block;
+      width: 100%;
+      max-width: 195px; }
+  .home > a {
+    min-width: 50%;
+    min-height: 50%;
+    cursor: pointer; }

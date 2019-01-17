@@ -1,0 +1,24 @@
+@import './../../assets/style/_variable/spacing';
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    &__link {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $medium;
+        &--logo {
+            display: block;
+            width: 100%;
+            max-width: 195px;
+        }
+    }
+    & > a {
+        min-width: 50%;
+        min-height: 50%;
+        cursor: pointer;
+    }
+}

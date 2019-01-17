@@ -1,0 +1,29 @@
+@import './../../assets/style/_variable/colors';
+@import './../../assets/style/_variable/spacing';
+
+.editor {
+    height: 100%;
+    padding: 30px;
+    background-color: $white;
+    &__search {
+        display: flex;
+        height: $large;
+        border: solid 2px $deep;
+        border-radius: $xsmall;
+        margin-bottom: $small;
+        overflow: hidden;
+    }
+    &__services {
+        height: calc(100% - #{$large});
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        &--results {
+            & > div {
+                margin-top: $small;
+                &:nth-of-type(1) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}   

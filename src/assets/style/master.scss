@@ -1,0 +1,14 @@
+@import './_variable/fonts';
+@import './_variable/icons';
+
+body {
+    margin: 0;
+    * { 
+        box-sizing: border-box;
+        outline: none;
+    }
+    button {
+        border: 0;
+        appearance: none;
+    }
+}

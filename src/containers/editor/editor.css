@@ -1,0 +1,19 @@
+.editor {
+  height: 100%;
+  padding: 30px;
+  background-color: #ffffff; }
+  .editor__search {
+    display: flex;
+    height: 50px;
+    border: solid 2px #5a5a5a;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; }
+  .editor__services {
+    height: calc(100% - 50px);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch; }
+    .editor__services--results > div {
+      margin-top: 15px; }
+      .editor__services--results > div:nth-of-type(1) {
+        margin-top: 0; }

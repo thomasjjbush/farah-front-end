@@ -1,0 +1,11 @@
+@import './../../assets/style/_variable/spacing';
+
+.service {
+    &__services {
+        margin: $large;
+    }
+    &__links {
+        display: flex;
+        height: 20vw;
+    }
+}

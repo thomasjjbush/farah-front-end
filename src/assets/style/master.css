@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "copy-bold";
+  src: url("./../fonts/copy-bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "copy-regular";
+  src: url("./../fonts/copy-regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "title-bold";
+  src: url("./../fonts/title-bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "title-regular";
+  src: url("./../fonts/title-regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "icons";
+  src: url("./../fonts/icons.ttf") format("truetype"); }
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: 100; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: title-bold; }
+
+p, span {
+  font-family: copy-regular; }
+
+[class^="icon__"]:before, [class*=" icon__"]:before {
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon__locked:before {
+  content: "\e901"; }
+
+.icon__update:before {
+  content: "\e934"; }
+
+.icon__delete:before {
+  content: "\e9ac"; }
+
+.icon__search:before {
+  content: "\e986"; }
+
+.icon__cancel:before {
+  content: "\ea0f"; }
+
+.icon__warning:before {
+  content: "\ea07"; }
+
+.icon__logout:before {
+  content: "\ea14"; }
+
+.icon__fb:before {
+  content: "\ea90"; }
+
+.icon__twitter:before {
+  content: "\ea92"; }
+
+.icon__insta:before {
+  content: "\ea96"; }
+
+body {
+  margin: 0; }
+  body * {
+    box-sizing: border-box;
+    outline: none; }
+  body button {
+    border: 0;
+    appearance: none; }
