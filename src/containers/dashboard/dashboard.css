@@ -5,23 +5,87 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-width: 150px; }
+    max-width: 150px;
+    font-family: Arial, Helvetica, sans-serif; }
     .dashboard__nav--item {
       flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 0 20px;
       color: #000000;
       text-decoration: none;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 11px;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif; }
+      .dashboard__nav--item:nth-of-type(1) {
+        border-bottom: solid 1px #000000; }
+      .dashboard__nav--item img {
+        display: block;
+        width: 80px;
+        height: auto; }
+      .dashboard__nav--item:before {
+        margin-bottom: 10px;
+        font-size: 20px; }
+      .dashboard__nav--item:hover:not(.dashboard__nav--item--active) {
+        background-color: #f1f1f1; }
       .dashboard__nav--item--active {
         background-color: #000000;
         color: #ffffff; }
       .dashboard__nav--item--logout {
         color: #ffffff;
         background-color: #f50548; }
+        .dashboard__nav--item--logout:hover {
+          background-color: #f50548 !important; }
   .dashboard__editor {
     flex: 1;
     padding: 30px;
     overflow: scroll;
-    background-color: #f1f1f1; }
+    background-color: #f1f1f1;
+    box-shadow: inset 3px 0px 20px 0px rgba(0, 0, 0, 0.15); }
+  .dashboard__notifications {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+    .dashboard__notifications .notification {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 240px;
+      padding: 20px;
+      margin-bottom: 10px;
+      background-color: white;
+      animation: slide-in 0.1s ease-in-out forwards;
+      box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+      z-index: 5000; }
+      .dashboard__notifications .notification:before {
+        font-size: 20px; }
+      .dashboard__notifications .notification__content {
+        margin-left: 10px; }
+        .dashboard__notifications .notification__content p {
+          font-size: 14px;
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0; }
+        .dashboard__notifications .notification__content span {
+          font-size: 12px;
+          font-weight: bold;
+          font-family: Arial, Helvetica, sans-serif; }
+      .dashboard__notifications .notification i {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 10px;
+        cursor: pointer; }
+      .dashboard__notifications .notification.icon__tick:before {
+        color: #64e864; }
+      .dashboard__notifications .notification.icon__warning:before {
+        color: #f50548; }
+
+@keyframes slide-in {
+  0% {
+    left: calc(100% + 10px); }
+  100% {
+    left: 0; } }

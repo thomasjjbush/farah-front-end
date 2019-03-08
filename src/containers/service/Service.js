@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { fetchSpecificConfig } from './../../actions/configuration';
 import { fetchServices } from './../../actions/services';
 import { configuration } from './../../config/';
@@ -18,7 +18,10 @@ class Service extends Component {
         }
     }
     async componentDidMount() {
-        if ( !this.props.configuration[this.state.service] || !this.props.services[this.state.service] ) {
+        if ( 
+            !(this.state.service in this.props.configuration) ||
+            !(this.state.service in this.props.services)
+        ) {
             await this.props.fetchSpecificConfig(`config/${this.state.service}`);
             await this.props.fetchServices(`services/${this.state.service}`);
             this.setState({
@@ -39,12 +42,17 @@ class Service extends Component {
                     title={this.state.service}
                     color={this.props.configuration[this.state.service].color}
                 />
-                <p className="service__description">{this.props.configuration[this.state.service].description}</p>
-                <div className="service__services">
-                    <Services 
-                        services={this.props.services[this.state.service]}
-                        color={this.props.configuration[this.state.service].color}
-                    />
+                <div className="container">
+                    <p className="service__description">{this.props.configuration[this.state.service].description}</p>
+                    <div className="service__services">
+                        {this.state.service in this.props.services && 
+                        Object.keys(this.props.services[this.state.service]).length > 0 && 
+                            <Services 
+                                services={this.props.services[this.state.service]}
+                                color={this.props.configuration[this.state.service].color}
+                            />
+                        }
+                    </div>
                 </div>
                 <div className="service__links">
                     {Object.keys(configuration).filter(route => route !== this.state.service).map((service) => {
@@ -61,6 +69,10 @@ class Service extends Component {
                         );
                     })}
                 </div>
+                <Link 
+                    to="/"
+                    className="go-home icon__home"
+                />
             </section>
         );
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { colors, spacing } from './../../assets/style/components';
 import DropDown from './../dropdown/DropDown';
+import Price from './../price/Price';
 
 class Service extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Service extends Component {
             <div className="services">
                 <Selector color={this.props.color}>
                     <DropDown
+                        client
                         defaultValue={this.props.active}
                         options={Object.keys(this.props.services)}
                         onChange={this.handleSelect}
@@ -28,10 +30,14 @@ class Service extends Component {
                         return (
                             <ServiceItem key={label} color={this.props.color}>
                                 <div>
-                                    <h2>{label}</h2>
+                                    <Title>{label}</Title>
                                     {description && <Description>{description}</Description>}
                                 </div>
-                                <Price data-promotion={promotion ? `£${promotion}.00` : null} color={this.props.color}>£{price}.00</Price>
+                                <Price 
+                                    price={price}
+                                    promotion={promotion}
+                                    color={this.props.color}
+                                />
                             </ServiceItem>
                         );
                     })}
@@ -42,7 +48,7 @@ class Service extends Component {
 }
 
 const Selector = styled.div`
-    height: ${spacing.large};
+    height: 100px;
     position: relative;
     padding: 0 ${spacing.medium};
     margin-bottom: ${spacing.xsmall};
@@ -51,31 +57,18 @@ const Selector = styled.div`
 const ServiceItem = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: ${spacing.xsmall}
-    border-left: solid ${spacing.xsmall} ${props => props.color};
+    border-left: solid 5px ${props => props.color};
     margin-bottom: ${spacing.xsmall};
     background-color: ${colors.offset};
 `;
-const Description = styled.p`
-    font-size: 14px;
-    line-height: 14px;
+const Title = styled.h2`
+    font-size: 3vmax;
 `;
-const Price = styled.h2`
-    flex-direction: column;
-    margin-left: ${spacing.medium};
-    text-align: right;
-    &[data-promotion] {
-        text-decoration: line-through;
-        color: ${props => props.color};
-        background-color: ${colors.white};
-    }
-    &:after {
-        content: attr(data-promotion);
-        display: inline-block;
-        text-decoration: none;
-        color: ${colors.black};
-        background-color: ${colors.white};
-    }
+const Description = styled.p`
+    font-size: 16px;
+    line-height: 14px;
 `;
 
 export default Service;

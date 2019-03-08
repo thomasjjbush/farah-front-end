@@ -52,3 +52,83 @@ export const configuration = {
         color: '#000000'
     }
 }
+
+export const social = [
+    {
+        icon: "icon__fb",
+        href: "xxx"
+    },
+    {
+        icon: "icon__twitter",
+        href: "xxx"
+    },
+
+    {
+        icon: "icon__insta",
+        href: "xxx"
+    }
+]
+
+export const servicePayload = [
+    {
+        label: "category",
+        type: "text",
+        required: true
+    },
+    {
+        label: "label",
+        type: "text",
+        required: true
+    },
+    {
+        label: "duration",
+        type: "number",
+        required: true
+    },
+    {
+        label: "price",
+        type: "number",
+        required: true
+    },
+    {
+        label: "promotion",
+        type: "number",
+        required: false
+    },
+    {
+        label: "description",
+        type: "text",
+        required: false
+    }
+]
+
+export const contactFields = [
+    {
+        label: "name",
+        type: "text",
+        required: true
+    },
+    {
+        label: "email",
+        type: "email",
+        required: true
+    },
+    {
+        label: "message",
+        type: "test",
+        required: true
+    }
+]
+
+export const loginFields = [
+    {
+        label: "username",
+        type: "text",
+        required: true
+    },
+    {
+        label: "password",
+        type: "password",
+        required: true
+    }
+]

@@ -1,6 +1,21 @@
-.service__services {
-  margin: 50px; }
+.service > .container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 50px; }
+
+.service__description {
+  margin-bottom: 25px;
+  font-size: 16px;
+  text-align: center; }
 
 .service__links {
   display: flex;
-  height: 20vw; }
+  height: 20vw;
+  margin-bottom: 70px; }
+
+.service .go-home {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  color: #000000; }

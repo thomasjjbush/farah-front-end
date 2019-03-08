@@ -10,5 +10,9 @@ body {
     button {
         border: 0;
         appearance: none;
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
     }
 }

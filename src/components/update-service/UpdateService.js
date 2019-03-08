@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { spacing, colors } from './../../assets/style/components';
-import Action from './../action/Action';
 
 class UpdateService extends Component {
     constructor(props) {
@@ -25,16 +24,23 @@ class UpdateService extends Component {
                 duration: this.props.service.duration,
                 price: this.props.service.price,
                 promotion: this.props.service.promotion,
-                description: this.props.service.description ? this.props.service.description : undefined
-            }
+                description: this.props.service.description ? this.props.service.description : ""
+            },
+            locked: true
         })
     }
     handleChange = (key, value) => {
         if ( (parseInt(value) > 0) && (key === 'duration' || key === 'price' || key === 'promotion') ) value = Number(value)
-        if ( key === 'description' && value === '' ) value = undefined
         this.setState({
             payload: {...this.state.payload, [key]: value}
         })
+    }
+    handleUpdate = async () => {
+        const payload = {...this.state.payload,
+            category: this.props.service.category,
+            subCategory: this.props.service.subCategory
+        }
+        this.props.handleUpdate(`services/${this.props.service._id}`, payload)
     }
     checkForUpdates = (key) => {
         return this.state.payload[key] !== this.props.service[key]
@@ -42,8 +48,8 @@ class UpdateService extends Component {
     render() {
         if ( this.state.loading ) return null; 
         return (
-            <Service>
-                <Content>
+            <Service locked={this.state.locked}>
+                <Content locked={this.state.locked} data-label={`${this.state.payload.label}`}>
                     <Data>
                         {Object.keys(this.state.payload).map((key) => {
                             return (
@@ -60,29 +66,36 @@ class UpdateService extends Component {
                         })}
                     </Data>
                     <Actions>
-                        <Action 
-                            type='delete'
-                            onClick={1}
-                            disabled={this.state.locked}
-                        />
-                        {Object.keys(this.state.payload).some(this.checkForUpdates) &&
+                        {!this.state.locked && 
+                            <Action 
+                                onClick={() => this.props.handleDel(`services/${this.props.service._id}`)}
+                                disabled={this.state.locked}
+                                className="icon__delete"
+                            >
+                                DELETE
+                            </Action>
+                        }
+                        {Object.keys(this.state.payload).some(this.checkForUpdates) && !this.state.locked &&
                             <React.Fragment>
                                 <Action 
-                                    type='update'
-                                    onClick={1}
-                                    disabled={this.state.locked} // check if 
-                                />
-                                <Action 
-                                    type='cancel'
-                                    onClick={this.resetPayload}
+                                    onClick={() => this.handleUpdate()}
                                     disabled={this.state.locked}
-                                />
+                                    className="icon__update"
+                                >
+                                    UPDATE
+                                </Action>
+                                <Action 
+                                    onClick={() => this.resetPayload()}
+                                    disabled={this.state.locked}
+                                >
+                                    CANCEL 
+                                </Action>
                             </React.Fragment>
                         }
                     </Actions>
                 </Content>
                 <Lock 
-                    className="icon__locked" 
+                    className={`icon__${this.state.locked ? 'locked' : 'edit'}`} 
                     locked={this.state.locked}
                     onClick={() => this.setState(prevState => ({ locked: !prevState.locked }))}
                 />
@@ -95,12 +108,28 @@ const Service = styled.div`
     flex: 1;
     display: flex;
     border-radius: ${spacing.xsmall};
+    border: solid 2px ${props => props.locked ? colors.error : colors.white};
     overflow: hidden;
-    background-color: ${colors.offset};
+    background-color: ${colors.white};
 `;
 const Content = styled.div`
     flex: 1;
     padding: ${spacing.small};
+    position: relative;
+    ${props => props.locked && `
+        &:after {
+            content: attr(data-label);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-color: rgba(0,0,0,0.75);
+            color: white;
+            font-family: Arial;
+            font-weight: bold;
+        }
+    `}
 `;
 const Data = styled.div`
     display: flex;
@@ -125,13 +154,28 @@ const Actions = styled.div`
         margin-right: ${spacing.small};
     }
 `;
+const Action = styled.button`
+    padding: ${spacing.small};
+    border-radius: 5px;
+    background-color: ${colors.black};
+    color: ${colors.white};
+    font-size: 14px;
+    &:before {
+        margin-right: ${spacing.xsmall};
+    }
+    &:nth-of-type(1) {
+        margin-right: ${spacing.small};
+        background-color: ${colors.error};
+    }
+`;
 const Lock = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50px;
-    background-color: ${props => props.locked ? colors.error : colors.success};
+    background-color: ${props => props.locked ? colors.error : colors.black};
     cursor: pointer;
+    color: ${colors.white};
 `;
 const Label = styled.label`
     display: block;
@@ -139,12 +183,16 @@ const Label = styled.label`
     font-size: 8px;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: Arial;
 `;
 const Input = styled.input`
     width: 100%;
     height: 50px;
     border: 0;
     padding: 0 ${spacing.small};
+    background-color: ${colors.offset};
+    font-size: 14px;
+    box-shadow: inset 8px 11px 20px 9px rgba(0,0,0,0.05);
     &[type="number"] {
         width: ${spacing.large};
         padding: 0;

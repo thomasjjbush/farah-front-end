@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { colors } from './../../assets/style/components';
 
 const ServiceWidget = (props) => {
     const Wrapper = styled(Link)`
@@ -21,11 +22,18 @@ const ServiceWidget = (props) => {
             opacity: 0.5;
         }
         &:hover {
-            opacity: 0.85;
+            &:before {
+                opacity: 0.85;
+            }
         }
     `;
     const Title = styled.h1`
+        position: relative;
+        z-index: 100;
         text-transform: uppercase;
+        color: ${colors.white};
+        text-decoration: none;
+        font-size: 5vmax;
     `;
     return (
         <Wrapper to={`/service/${props.path}`}>

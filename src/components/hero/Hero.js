@@ -1,4 +1,5 @@
 import React from 'react';
+import Farah from './../../assets/img/farah.jpg';
 import styled from 'styled-components';
 
 const Hero = (props) => {
@@ -17,7 +18,7 @@ const Hero = (props) => {
             top: 0; right: 0; bottom: 0; left: 0;
             transition: opacity 0.15s linear;
             background-color: ${props.color};
-            opacity: 0.5;
+            opacity: 0.25;
         }
     `;
     const Title = styled.h1`
@@ -30,9 +31,18 @@ const Hero = (props) => {
         text-transform: uppercase;
         background-color: ${props.color}
     `;
+    const Logo = styled.img`
+        display: block;
+        width: 130px;
+        position: absolute;
+        top: 20px; right: 20px;
+        padding: 20px;
+        background-color: white;
+    `;
     return (
         <Wrapper>
             <Title>{props.title}</Title>
+            <Logo src={Farah} alt="Farah" />
         </Wrapper>
     );
 }

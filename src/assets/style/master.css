@@ -11,20 +11,16 @@
   src: url("./../fonts/title-bold.ttf") format("truetype"); }
 
 @font-face {
-  font-family: "title-regular";
-  src: url("./../fonts/title-regular.ttf") format("truetype"); }
-
-@font-face {
   font-family: "icons";
   src: url("./../fonts/icons.ttf") format("truetype"); }
 
 h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
-  padding: 0;
-  font-weight: 100; }
+  padding: 0; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: title-bold; }
+h1, h2, h3, h4, h5, h6, a {
+  font-family: title-bold;
+  font-weight: 700; }
 
 p, span {
   font-family: copy-regular; }
@@ -41,7 +37,7 @@ p, span {
   -moz-osx-font-smoothing: grayscale; }
 
 .icon__locked:before {
-  content: "\e901"; }
+  content: "\e902"; }
 
 .icon__update:before {
   content: "\e934"; }
@@ -56,7 +52,7 @@ p, span {
   content: "\ea0f"; }
 
 .icon__warning:before {
-  content: "\ea07"; }
+  content: "\e90c"; }
 
 .icon__logout:before {
   content: "\ea14"; }
@@ -65,10 +61,19 @@ p, span {
   content: "\ea90"; }
 
 .icon__twitter:before {
-  content: "\ea92"; }
+  content: "\ea96"; }
 
 .icon__insta:before {
-  content: "\ea96"; }
+  content: "\ea92"; }
+
+.icon__home:before {
+  content: "\e901"; }
+
+.icon__edit:before {
+  content: "\e905"; }
+
+.icon__tick:before {
+  content: "\ea10"; }
 
 body {
   margin: 0; }
@@ -77,4 +82,7 @@ body {
     outline: none; }
   body button {
     border: 0;
-    appearance: none; }
+    appearance: none;
+    cursor: pointer; }
+  body a {
+    text-decoration: none; }

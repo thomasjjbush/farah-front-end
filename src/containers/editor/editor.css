@@ -1,19 +1,26 @@
 .editor {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 30px;
-  background-color: #ffffff; }
+  background-color: #f1f1f1; }
   .editor__search {
     display: flex;
     height: 50px;
-    border: solid 2px #5a5a5a;
+    border: solid 2px #000000;
     border-radius: 10px;
     margin-bottom: 15px;
-    overflow: hidden; }
+    overflow: hidden;
+    background-color: #ffffff; }
   .editor__services {
-    height: calc(100% - 50px);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
-    -webkit-overflow-scrolling: touch; }
-    .editor__services--results > div {
-      margin-top: 15px; }
-      .editor__services--results > div:nth-of-type(1) {
-        margin-top: 0; }
+    -webkit-overflow-scrolling: touch;
+    position: relative; }
+    .editor__services--results {
+      position: relative; }
+      .editor__services--results > div {
+        margin-top: 15px; }
+        .editor__services--results > div:nth-of-type(1) {
+          margin-top: 0; }

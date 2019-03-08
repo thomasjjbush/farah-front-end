@@ -3,7 +3,7 @@
 .home {
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;
+    height: calc(100vh - 70px);
     &__link {
         flex: 1;
         display: flex;

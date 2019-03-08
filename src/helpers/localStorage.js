@@ -21,7 +21,3 @@ export const setLocalStorage = async (key, value) => {
         return await localStorage.setItem(key, JSON.stringify(value));
     }
 }
-
-export const nestLocalStorage = async (key, innerKey, value) => {
-    
-}

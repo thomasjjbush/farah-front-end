@@ -13,7 +13,7 @@
 }
 .icon {
     &__locked:before {
-        content: "\e901";
+        content: "\e902";
     }
     &__update:before {
         content: "\e934";
@@ -28,7 +28,7 @@
         content: "\ea0f";
     }
     &__warning:before {
-        content: "\ea07";
+        content: "\e90c";
     }
     &__logout:before {
         content: "\ea14";
@@ -37,9 +37,18 @@
         content: "\ea90";
     }
     &__twitter:before {
-        content: "\ea92";
+        content: "\ea96";
     }
     &__insta:before {
-        content: "\ea96";
+        content: "\ea92";
+    }
+    &__home:before {
+        content: "\e901";
+    }
+    &__edit:before {
+        content: "\e905";
+    }
+    &__tick:before {
+        content: "\ea10";
     }
 }

@@ -1,18 +1,18 @@
-$fonts: "copy-bold", "copy-regular", "title-bold", "title-regular", "icons";
+$fonts: "copy-bold", "copy-regular", "title-bold", "icons";
 @each $font in $fonts {
 	@font-face {
 		font-family: $font;
-		src: url('./../fonts/#{$font}.ttf') format('truetype'),
+		src: url('./../fonts/#{$font}.ttf') format('truetype')
 	}
 }
 h1, h2, h3, h4, h5, h6, p, ul {
     margin: 0;
     padding: 0;
-    font-weight: 100;
 }
 
-h1, h2, h3, h4 ,h5, h6 {
+h1, h2, h3, h4 ,h5, h6, a {
     font-family: title-bold;
+    font-weight: 700;
 }
 p, span {
     font-family: copy-regular;

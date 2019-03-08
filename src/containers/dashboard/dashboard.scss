@@ -1,4 +1,5 @@
 @import './../../assets/style/_variable/colors';
+@import './../../assets/style/_variable/spacing';
 
 .dashboard {
     display: flex;
@@ -8,14 +9,36 @@
         display: flex;
         flex-direction: column;
         max-width: 150px;
+        font-family: Arial, Helvetica, sans-serif;
         &--item {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 0 20px;
             color: $black;
             text-decoration: none;
             text-transform: uppercase;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            &:nth-of-type(1) {
+                border-bottom: solid 1px $black;
+            }
+            img {
+                display: block;
+                width: 80px;
+                height: auto;
+            }
+            &:before {
+                margin-bottom: $xsmall;
+                font-size: 20px;   
+            }
+            &:hover:not(.dashboard__nav--item--active) {
+                background-color: $offset;
+            }
             &--active { 
                 background-color: $black; 
                 color: $white;
@@ -23,6 +46,9 @@
             &--logout {
                 color: $white;
                 background-color: $error;
+                &:hover {
+                    background-color: $error !important;
+                }
             }
         }   
     }
@@ -31,5 +57,56 @@
         padding: 30px;
         overflow: scroll;
         background-color: $offset;
-    }   
+        box-shadow: inset 3px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    }  
+    &__notifications {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        .notification {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 240px;
+            padding: 20px;
+            margin-bottom: 10px;
+            background-color: white;
+            animation: slide-in 0.1s ease-in-out forwards;
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+            z-index: 5000;
+            &:before {
+                font-size: 20px;
+            }
+            &__content {
+                margin-left: 10px;
+                p {
+                    font-size: 14px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    margin: 0;
+                }
+                span {
+                    font-size: 12px;
+                    font-weight: bold;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+            }
+            i {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 10px;
+                cursor: pointer;
+            }
+            &.icon__tick:before {
+                color: $success;
+            }
+            &.icon__warning:before {
+                color: $error;
+            }
+        }
+        @keyframes slide-in {
+            0% { left: calc(100% + 10px); }
+            100% { left: 0; }
+        }
+    } 
 }

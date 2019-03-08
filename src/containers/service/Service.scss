@@ -1,11 +1,29 @@
 @import './../../assets/style/_variable/spacing';
+@import './../../assets/style/_variable/colors';
 
 .service {
+    & > .container {
+        max-width: 1000px;
+        margin: $large auto;
+        padding: 0 $large;
+    }   
+    &__description {
+        margin-bottom: $medium;
+        font-size: 16px;
+        text-align: center;
+    }
     &__services {
-        margin: $large;
+        
     }
     &__links {
         display: flex;
         height: 20vw;
+        margin-bottom: 70px;
+    }
+    .go-home {
+        position: fixed;
+        top: $small; left: $small;
+        font-size: 24px;
+        color: $black;
     }
 }

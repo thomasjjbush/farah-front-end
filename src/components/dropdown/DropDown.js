@@ -9,6 +9,7 @@ const DropDown = (props) => {
     }
     return (
         <Select 
+            client={props.client}
             onChange={(e) => onSelect(e.target.value)} 
             defaultValue={props.defaultValue}
         >
@@ -21,16 +22,24 @@ const DropDown = (props) => {
     );
 }
 const Select = styled.select`
+    ${props => props.client && `
+        width: 100%;
+        font-family: title-bold;
+        font-size: 4vmax;
+    `}
     height: 100%;
     padding: ${spacing.xsmall} 30px ${spacing.xsmall} ${spacing.xsmall};
     border: 0;
     border-radius: 0;
     appearance: none;
-    background: ${colors.white} url(${require('./../../assets/img/dropdown.png')}) no-repeat right 10px center;
+    background-color: ${colors.white};
+    background: transparent url(${require('./../../assets/img/dropdown.png')}) no-repeat right 10px center;
     background-size: 10px 5px;
     font-weight: bold;
     text-transform: uppercase;
 `;
-const Option = styled.option``;
+const Option = styled.option`
+    font-size: 16px;
+`;
 
 export default DropDown;

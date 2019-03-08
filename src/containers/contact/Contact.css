@@ -1,0 +1,39 @@
+.contact {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: calc(100% - 70px);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: top 0.25s ease-in-out;
+  z-index: 1000; }
+  .contact--open {
+    top: 0%; }
+  .contact__tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px;
+    background-color: #000000; }
+    .contact__tab .social {
+      color: #ffffff;
+      font-size: 24px;
+      margin-right: 10px; }
+    .contact__tab .open {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 15px;
+      background-color: #ffffff;
+      font-size: 20px;
+      font-weight: bold; }
+  .contact__content {
+    flex: 1;
+    display: flex;
+    background-color: #f1f1f1; }
+    .contact__content > div {
+      flex: 1;
+      margin: 25px;
+      overflow: hidden; }

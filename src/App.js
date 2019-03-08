@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { routes } from './config/';
+import Contact from './containers/contact/Contact';
 
 class App extends Component {
   	render() {
@@ -18,9 +19,15 @@ class App extends Component {
 						);
 					})}
 				</Switch>
+				{this.props.location.pathname.split('/')[1] !== 'admin' && 
+					<Contact 
+						open={this.props.location.hash === "#contact"}
+						pathname={this.props.location.pathname}
+					/>
+				}
 			</React.Fragment>
     	);
   	}
 }
 
-export default App;
+export default withRouter(App);
